@@ -19,22 +19,22 @@ DisplayStadiumDetails (stadium, game);
 
 static string GetEnjoymentLevel(){
     System.Console.WriteLine("Please enter your enjoyment level (Boring, Average, Fun, Epic)");
-    string enjoymentLevel = Console.ReadLine();
+    string enjoymentLevel = Console.ReadLine().ToLower();
     return enjoymentLevel;
 }
 
 static string GetStadiumRecommendation (string enjoymentLevel){
-    if (enjoymentLevel == "Boring")
+    if (enjoymentLevel.ToLower() == "boring")
     {
         return "Neyland Stadium";
     }
-    else if (enjoymentLevel == "Average"){
+    else if (enjoymentLevel.ToLower() == "average"){
         return "Jordan-Hare Stadium";
     }
-    else if (enjoymentLevel == "Fun"){
+    else if (enjoymentLevel.ToLower() == "fun"){
         return "Tiger Stadium";
     }
-    else if (enjoymentLevel == "Epic"){
+    else if (enjoymentLevel.ToLower() == "epic"){
         return "Saban Field at Bryant-Denny Stadium";
     }
     else {
@@ -63,7 +63,11 @@ static string GetGameRecommendation (string stadiumRecommendation){
     }
 }
 
+
 static void DisplayStadiumDetails (string stadium, string game){
+    if (stadium == "invalid" && game == "invalid"){
+        System.Console.WriteLine("Input invalid");
+    }
     System.Console.WriteLine($"Based upon your enjoyment level, a game at {stadium} {game} is recommended for you to attend.");
 }
 
